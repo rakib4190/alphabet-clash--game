@@ -1,6 +1,8 @@
 function handleKeyboardKeyPress(event){
     const playerPressed = event.key;
-
+    if(playerPressed == 'Escape'){
+        gameOver();
+    }
     const currentAlphabetElement = document.getElementById('current-alphabet');
    const currentAlphabet = currentAlphabetElement.innerText.toLowerCase();
    if(currentAlphabet === playerPressed){
