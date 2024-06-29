@@ -40,3 +40,10 @@ function setTextElementValueById(elementId, value){
     const element =document.getElementById(elementId);
     element.innerText = value;
 }
+
+function getElementTextById(elementId){
+    const elementText = document.getElementById(elementId)
+    const elementValue = elementText.innerText;
+    return elementValue;
+
+}

@@ -1,5 +1,6 @@
 function handleKeyboardKeyPress(event){
     const playerPressed = event.key;
+
     const currentAlphabetElement = document.getElementById('current-alphabet');
    const currentAlphabet = currentAlphabetElement.innerText.toLowerCase();
    if(currentAlphabet === playerPressed){
@@ -19,17 +20,14 @@ function handleKeyboardKeyPress(event){
     const reaminingLife = currentLife - 1;
     setTextElementValueById('current-life', reaminingLife);
     if(reaminingLife === 0){
-        hideElementById('play-ground');
-        showElementById('display-score');
+        gameOver();
+
     }
     
    }
    
 }
 document.addEventListener('keyup', handleKeyboardKeyPress);
-
-
-
 
 function continueGame(){
     //generate a random alphabet
@@ -41,11 +39,24 @@ function continueGame(){
    setBackgroundColorById(alphabet);
 
 }
-
 function play(){
+    //hide home screen and display score section and show only play ground
     hideElementById('home-screen');
+    hideElementById('display-score');
     showElementById('play-ground');
+    //reset life and score value
+    setTextElementValueById('current-life', 5);
+    setTextElementValueById('current-score', 0);
+
     continueGame();
    
-
+}
+function gameOver(){
+    hideElementById('play-ground');
+    showElementById('display-score');
+    const lastScore = getTextElementValueById('current-score');
+    setTextElementValueById('final-score', lastScore);
+    // remove current alphbet background color
+    const currentAlphabet = getElementTextById('current-alphabet')
+    removeBackgroundColorById(currentAlphabet);
 }
